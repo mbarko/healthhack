@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
 namespace DoctorsTravellers.Models
 {
     public class HomePageServices
@@ -13,7 +12,7 @@ namespace DoctorsTravellers.Models
         {
             MYSQLServices ms = new MYSQLServices();
             List<Question> result = new List<Question>();
-           
+
             try
             {
                 Question qhelp = new Question();
@@ -46,7 +45,7 @@ namespace DoctorsTravellers.Models
                 if (questionlist.Count == 0) { return result; }
                 foreach (string j in questionlist)
                 {
-                    result.Add(new Question { question = j, qid = qidlist[count], url = "home/QuestionPage/"+ qidlist[count] +  "/"+string.Join("", qhelp.GetTags(j).ToArray()).Replace('#','-') });
+                    result.Add(new Question { question = j, qid = qidlist[count], url = "home/QuestionPage/" + qidlist[count] + "/" + string.Join("", qhelp.GetTags(j).ToArray()).Replace('#', '-') });
                     count++;
                 }
 
@@ -84,7 +83,23 @@ namespace DoctorsTravellers.Models
             return rid;
         }
 
+        public int RegisterInfoPostHandler(System.Web.Mvc.FormCollection collection)
+        {
+            string username = collection.Get("username");
+            string password = collection.Get("password1");
+            string email = collection.Get("email");
+            string type = collection.Get("radio-group-1");
+            string speciality = collection.Get("speciality");
 
-
+            int qid = -1;
+            MYSQLServices ms = new MYSQLServices();
+            try
+            {
+                qid = ms.AddToRegisterInfoTable(username, password, email, type, speciality);
+                return qid;
+            }
+            catch (Exception e) { throw; }
+            return qid;
+        }
     }
 }

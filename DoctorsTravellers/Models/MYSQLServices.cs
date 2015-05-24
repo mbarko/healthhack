@@ -177,6 +177,25 @@ namespace DoctorsTravellers.Models
         }
 
 
+        public int AddToRegisterInfoTable(string username, string password, string email, string type, string speciality)
+        {
+            int qid = -1;
+            //string qdate = DateTime.Now.ToString("yyyy-MM-dd HH:mm"); ;
+            //int uid = GetId();
+            string values = "'" + username + "','" + username + "','" + email + "','" + password + "','" + type + "'";
+            string command = "INSERT INTO register_info(name,username,email,password,type) VALUES(" + values + ")";
+            SendCommand(command);
+
+            if (type.Equals("doctor"))
+            {
+                values = "LAST_INSERT_ID(),'" + speciality + "'";
+                command = "INSERT INTO speciality(UID,speciality) VALUES(" + values + ")";
+                SendCommand(command);
+            }
+
+            return qid = 1;// qhelp.GetQID(question);
+        }
+
 
         /******RAHAL ADD THESE TO A USER MODEL CLASS****/
         public string GetType()

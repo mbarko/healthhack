@@ -8,6 +8,7 @@ using DoctorsTravellers.Models;
 using System.Data;
 using System.Web.Script.Serialization;
 
+
 namespace DoctorsTravellers.Controllers
 {
     public class HomeController : Controller
@@ -15,14 +16,6 @@ namespace DoctorsTravellers.Controllers
         //
         // GET: /Home/
         public ActionResult HomePage()
-        {
-            
-            return View();
-
-             //return RedirectToAction("test");//For testing
-        }
-
-        public ActionResult QuestionPage(int qid,string hashtags)
         {
 
             return View();
@@ -34,11 +27,35 @@ namespace DoctorsTravellers.Controllers
             return Content("Log In Clicked");
         }
 
+        [HttpGet]
         public ActionResult SignUp()//ADD A VIEW AND SAY RETURN VIEW AS OPPOSED TO RETURN CONTENT
         {
-            return Content("Sign Up Clicked");
+            return View("SignUp");
+            //return Content("Sign Up Clicked");
         }
 
+        [HttpPost]
+        public ActionResult SignUp(FormCollection collection)//ADD A VIEW AND SAY RETURN VIEW AS OPPOSED TO RETURN CONTENT
+        {
+            HomePageServices hps = new HomePageServices();
+            //TODO Check for duplicate username and email
+            //TODO encript password
+            int result = hps.RegisterInfoPostHandler(collection);
+
+            //TODO if duplicate username/email - show error msg
+
+            // for now assume everything is good
+            // if everything is good save username in this session
+            Session["userName"] = collection.Get("username");
+            return View("HomePage");
+        }
+
+        public ActionResult QuestionPage(int qid, string hashtags)
+        {
+
+            return View();
+
+        }
 
         public ActionResult test()//SIMULATES BROWZER REQUESTS BUT WITHOUT BROWZER
         {
@@ -53,7 +70,7 @@ namespace DoctorsTravellers.Controllers
             HomePageServices hps = new HomePageServices();
             var result = hps.QuestionSearchHandelr(question);
             var temp = new JavaScriptSerializer().Serialize(result);
-            
+
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }

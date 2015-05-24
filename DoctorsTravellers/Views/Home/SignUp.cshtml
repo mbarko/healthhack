@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SIgn up here</title>
+</head>
+
+<body>
+
+    <div id="SignUpBox" class="container">
+    <div class="form-group">
+    <form action='SignUp' name="SignUpForm" id="signupbutton" method="POST" onsubmit="return myFunc()">
+        <input type="text" onclick="txtClicked();" placeholder="User Name" name="username" id="username" required/><br /> 
+        <input type="email" onclick="txtClicked();" placeholder="Email" name="email" required/><br />   
+        <input type="password" onclick="txtClicked();" placeholder="Password" name="password1" id="password1" required/><br />
+        <input type="password" onclick="txtClicked();" placeholder="Confirm Password" name="password2" id="password2" required/><br />
+        
+        <input type="radio" id="doctor" onclick="radoioclick();"  name="radio-group-1" value="doctor" required>
+        Doctor
+        <br>
+        <input type="radio" id="traveller" onclick="radoioclick();" name="radio-group-1" value="traveller" required />
+        Traveller
+        <br>
+        <input type="radio" id="travellAgency" onclick="radoioclick();" name="radio-group-1" value="travellAgency" required />
+        Travell Agency
+        <br>
+
+    <div id="showdiv" style="display: none">
+        <input type="text" placeholder="What is your speciality" name="speciality" id="speciality" required/>
+        <br />
+    </div>
+
+        <input type="submit" value="Sign Up"/>    
+        <br>
+    </form>
+        </div>
+        </div>
+
+    <script>
+        //document.getElementById("doctor").addEventListener('change', function () {
+        //    document.getElementById("DocId").required = !this.checked;
+        //})
+
+        function radoioclick() {
+            var doctor = document.getElementById("doctor");
+            var traveller = document.getElementById("traveller");
+            var travellAgency = document.getElementById("travellAgency");
+
+            var showdiv = document.getElementById("showdiv");
+
+            if (doctor.checked) {
+                showdiv.style.display = 'block';
+                document.getElementById("speciality").required = true;
+            }
+            else {
+                showdiv.style.display = 'none';
+                document.getElementById("speciality").required = false;
+            }
+
+        }
+
+        function myFunc() {
+            var password1 = document.getElementById("password1").value;
+            var password2 = document.getElementById("password2").value;
+            var ok = true;
+            if (password1.length < 6) {
+                alert("Passwords must contain at least 6 charactors");
+                ok = false;
+            }
+
+            if (password1 != password2) {
+                alert("Passwords Do not match");
+                document.getElementById("password1").style.borderColor = "#E34234";
+                document.getElementById("password2").style.borderColor = "#E34234";
+                ok = false;
+            }
+            else {
+                alert("Passwords Match!!!");
+            }
+            return ok;
+        }
+    </script>
+
+</body>
+
+</html>
