@@ -12,37 +12,34 @@
 </head>
 
 <body>
-
-
     <div id="SignUpBox" class="container">
-            <h1>SignUp!</h1>
-    <div class="form-group">
-    <form action='SignUp' name="SignUpForm" id="signupbutton" method="POST" onsubmit="return myFunc()">
-        <input type="text" onclick="txtClicked();" placeholder="User Name" name="username" id="username" required/><br /> 
-        <input type="email" onclick="txtClicked();" placeholder="Email" name="email" required/><br />   
-        <input type="password" onclick="txtClicked();" placeholder="Password" name="password1" id="password1" required/><br />
-        <input type="password" onclick="txtClicked();" placeholder="Confirm Password" name="password2" id="password2" required/><br />
+        <h1>SignUp!</h1>
+        <div class="form-group">
+            <form action='SignUp' name="SignUpForm" id="signupbutton" method="POST" onsubmit="return myFunc()">
+            <input type="text" onclick="txtClicked();" placeholder="User Name" name="username" id="username" required/><br /> 
+            <input type="email" onclick="txtClicked();" placeholder="Email" name="email" required/><br />   
+            <input type="password" onclick="txtClicked();" placeholder="Password" name="password1" id="password1" required/><br />
+            <input type="password" onclick="txtClicked();" placeholder="Confirm Password" name="password2" id="password2" required/><br />
         
-        <input style="margin-top:40px " type="radio" id="doctor" onclick="radoioclick();"  name="radio-group-1" value="doctor" required>
-        Doctor
-        <br>
-        <input type="radio" id="traveller" onclick="radoioclick();" name="radio-group-1" value="traveller" required />
-        Traveller
-        <br>
-        <input type="radio" id="travellAgency" onclick="radoioclick();" name="radio-group-1" value="travellAgency" required />
-        Travell Agency
-        <br>
+            <input style="margin-top:40px " type="radio" id="doctor" onclick="radoioclick();"  name="radio-group-1" value="doctor" required>
+            Doctor
+            <br>
+            <input type="radio" id="traveller" onclick="radoioclick();" name="radio-group-1" value="traveller" required />
+            Traveller
+            <br>
+            <input type="radio" id="travellAgency" onclick="radoioclick();" name="radio-group-1" value="travellAgency" required />
+            Travell Agency
+            <br>
 
-    <div id="showdiv" style="display: none">
-        <input type="text" placeholder="What is your speciality" name="speciality" id="speciality" required/>
-        <br />
+                <div id="showdiv" style="display: none">
+                <input type="text" placeholder="What is your speciality" name="speciality" id="speciality" required/>
+                <br />
+                </div>
+            <input id="rahal" class="title" type="submit" style="border:none" value="sign up"/>    
+            <br>
+        </form>
     </div>
-
-        <input id="rahal" class="title" type="submit" style="border:none" value="sign up"/>    
-        <br>
-    </form>
-        </div>
-        </div>
+</div>
 
     <script>
         //document.getElementById("doctor").addEventListener('change', function () {

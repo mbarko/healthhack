@@ -101,5 +101,22 @@ namespace DoctorsTravellers.Models
             catch (Exception e) { throw; }
             return qid;
         }
+
+        public int CheckIfRegisteredUserHandler(System.Web.Mvc.FormCollection collection)
+        {
+            int returnId = -1;
+            string username = collection.Get("username");
+            string password = collection.Get("password");
+
+            MYSQLServices ms = new MYSQLServices();
+            try
+            {
+                returnId = ms.CheckIfRegisteredUserHandler(username, password);
+            }
+            catch (Exception e) { throw; }
+
+            return returnId;
+        }
+
     }
 }

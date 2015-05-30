@@ -196,6 +196,23 @@ namespace DoctorsTravellers.Models
             return qid = 1;// qhelp.GetQID(question);
         }
 
+        public int CheckIfRegisteredUserHandler(string username, string password)
+        {
+            List<String> returnStrings = new List<string>();
+            string command = "SELECT UID from register_info where username='" + username + "' and password='" + password + "'";
+            returnStrings = LoadData(command);
+
+            if (returnStrings.Count == 0)
+            {
+                return -1;
+            }
+
+            int result = Int32.Parse(returnStrings[0]);
+            {
+                return result;
+            }
+        }
+
 
         /******RAHAL ADD THESE TO A USER MODEL CLASS****/
         public string GetType()

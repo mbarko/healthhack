@@ -22,20 +22,31 @@ namespace DoctorsTravellers.Controllers
 
         }
 
-        public ActionResult SignIn()//ADD A VIEW AND SAY RETURN VIEW AS OPPOSED TO RETURN CONTENT
-        {
-            return Content("Log In Clicked");
-        }
-
         [HttpGet]
-        public ActionResult SignUp()//ADD A VIEW AND SAY RETURN VIEW AS OPPOSED TO RETURN CONTENT
+        public ActionResult SignIn()
         {
-            return View("SignUp");
-            //return Content("Sign Up Clicked");
+            return View("SignIn");
         }
 
         [HttpPost]
-        public ActionResult SignUp(FormCollection collection)//ADD A VIEW AND SAY RETURN VIEW AS OPPOSED TO RETURN CONTENT
+        public ActionResult SignIn(FormCollection collection)
+        {
+            HomePageServices hps = new HomePageServices();
+            int result = hps.CheckIfRegisteredUserHandler(collection);
+
+            string username = collection.Get("username");
+            ViewBag.username = result;
+            return View("SignInResult");
+        }
+
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            return View("SignUp");
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(FormCollection collection)
         {
             HomePageServices hps = new HomePageServices();
             //TODO Check for duplicate username and email

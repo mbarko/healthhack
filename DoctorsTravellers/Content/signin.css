@@ -1,0 +1,22 @@
+﻿body {
+}
+
+#SignInBox {
+font-size:20px;
+padding:10px;
+}
+h1 {
+    padding-bottom:30px;
+}
+h2 {
+    padding-bottom:30px;
+    font-size:15px;
+}
+
+#SignInButton {
+    padding-left:10px;
+        padding-right:10px;
+        padding-bottom:3px;
+        top:450px;
+        position:fixed;
+}
