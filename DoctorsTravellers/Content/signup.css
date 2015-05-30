@@ -1,0 +1,17 @@
+﻿body {
+}
+
+#SignUpBox {
+font-size:20px;
+padding:10px;
+}
+h1 {
+    padding-bottom:30px;
+}
+#rahal {
+    padding-left:10px;
+        padding-right:10px;
+        padding-bottom:3px;
+        top:450px;
+        position:fixed;
+}

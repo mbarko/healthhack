@@ -154,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\signup.css" />
     <Content Include="images\comment.png" />
     <Content Include="images\doctor2.png" />
     <Content Include="images\doctor.png" />
