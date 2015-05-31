@@ -118,5 +118,32 @@ namespace DoctorsTravellers.Models
             return returnId;
         }
 
+        public List<string> getUserInfo(int UID)
+        {
+            List<String> returnStrings = new List<string>();
+            MYSQLServices ms = new MYSQLServices();
+            try
+            {
+                returnStrings = ms.getUserInfo(UID);
+            }
+            catch (Exception e) { throw; }
+
+            return returnStrings;
+        }
+
+        public string getUserSpeciality(int UID)
+        {
+
+            String speciality;
+            MYSQLServices ms = new MYSQLServices();
+            try
+            {
+                speciality = ms.getUserSpeciality(UID);
+            }
+            catch (Exception e) { throw; }
+
+            return speciality;
+        }
+
     }
 }

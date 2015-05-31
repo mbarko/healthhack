@@ -28,6 +28,41 @@ namespace DoctorsTravellers.Controllers
             return View("SignIn");
         }
 
+        [HttpGet]
+        public ActionResult MyProfile()
+        {
+            // take user id from the session
+            int UID = 16;
+            ViewBag.UID = UID;
+            List<string> result = new List<string>();
+            HomePageServices hps = new HomePageServices();
+            result = hps.getUserInfo(UID);
+            string[] temp = result[0].Split('%');
+
+            if (result == null)
+            {
+                ViewBag.username = "Admin";
+            }
+            else
+            {
+                //List<string> result = new List<string>();
+                //string[] temp = question.Split(null);
+                ViewBag.username = temp[2];
+                ViewBag.useremail = temp[3];
+                ViewBag.usertype = temp[5];
+
+            }
+
+            // If UID is a 'doctor' get his speciality
+            if (ViewBag.usertype.Equals("doctor"))
+            {
+                String speciality = hps.getUserSpeciality(UID);
+                ViewBag.speciality = speciality;
+            }
+
+            return View("MyProfile");
+        }
+
         [HttpPost]
         public ActionResult SignIn(FormCollection collection)
         {

@@ -33,13 +33,13 @@ img {
 #signup, #signin {
     float: right;
     right: 4%;
-    font-size: 20px;
-    
+    font-size: 20px;   
 }
-#signup a, #signin a {
-color:white;
-    
+
+#signup a, #signin a{
+color:white;  
 }
+
 #questionbox {
     position: relative;
     margin-top: 6%;

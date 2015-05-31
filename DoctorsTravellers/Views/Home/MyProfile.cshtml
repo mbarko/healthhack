@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Profile";
+}
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My Profile</title>
+</head>
+
+<body>
+
+    <div id="MyProfileBox" class="container">
+        <div id="userInfo" class="container">
+            <h3 id="myprofile"><a href="~/Home/MyProfile">
+                <img id="profilepic" src="~/images/doctor.png" aria-hidden="true" /></a></h3>
+            <h1>User Name</h1>  <h2>@ViewBag.username</h2>
+            <h1>Email</h1>      <h2>@ViewBag.useremail</h2>
+            <h1>User Type</h1>  <h2>@ViewBag.usertype</h2>
+            @if (ViewBag.usertype.Equals("doctor"))
+            {
+                <h1>Speciality</h1> <h2>@ViewBag.speciality</h2>
+             }
+            <input id="edit" class="title" type="submit" style="border:none" value="Edit"/>
+        </div>
+    </div>
+
+</body>
+
+</html>

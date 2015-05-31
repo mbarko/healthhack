@@ -23,7 +23,7 @@ namespace DoctorsTravellers
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/questionstyle.css", "~/Content/site.css", "~/Content/style.css", "~/Content/signup.css", "~/Content/signin.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/questionstyle.css", "~/Content/site.css", "~/Content/style.css", "~/Content/signup.css", "~/Content/signin.css", "~/Content/myprofile.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

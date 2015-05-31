@@ -208,10 +208,43 @@ namespace DoctorsTravellers.Models
             }
 
             int result = Int32.Parse(returnStrings[0]);
-            {
-                return result;
-            }
+            return result;
         }
+
+        public List<string> getUserInfo(int UID)
+        {
+            List<String> returnStrings = new List<string>();
+            string command = "SELECT * from register_info where UID='" + UID + "'";
+            returnStrings = LoadData(command);
+
+            if (returnStrings.Count == 0)
+            {
+                return null;
+            }
+
+            return returnStrings;
+
+        }
+
+
+        public string getUserSpeciality(int UID)
+        {
+            List<String> returnStrings = new List<string>();
+            string command = "SELECT * from speciality where UID='" + UID + "'";
+            returnStrings = LoadData(command);
+
+            if (returnStrings.Count == 0)
+            {
+                return null;
+            }
+
+            string[] temp = returnStrings[0].Split('%');
+            string speciality = temp[1];
+            return speciality;
+
+        }
+
+        
 
 
         /******RAHAL ADD THESE TO A USER MODEL CLASS****/

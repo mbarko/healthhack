@@ -154,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\myprofile.css" />
     <Content Include="Content\signup.css" />
     <Content Include="images\comment.png" />
     <Content Include="images\doctor2.png" />
@@ -256,6 +257,10 @@
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Home\QuestionPage.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Home\SignInResult.cshtml" />
+    <Content Include="Views\Home\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
