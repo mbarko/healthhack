@@ -90,9 +90,6 @@ namespace DoctorsTravellers.Controllers
 
             //TODO if duplicate username/email - show error msg
 
-            // for now assume everything is good
-            // if everything is good save username in this session
-            Session["userName"] = collection.Get("username");
             return View("HomePage");
         }
 

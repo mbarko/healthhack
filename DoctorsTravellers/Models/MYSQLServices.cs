@@ -177,13 +177,16 @@ namespace DoctorsTravellers.Models
         }
 
 
-        public int AddToRegisterInfoTable(string username, string password, string email, string type, string speciality)
+        public int AddToRegisterInfoTable(string username, string password, string email, string type, string speciality, string location)
         {
             int qid = -1;
-            //string qdate = DateTime.Now.ToString("yyyy-MM-dd HH:mm"); ;
-            //int uid = GetId();
+
             string values = "'" + username + "','" + username + "','" + email + "','" + password + "','" + type + "'";
             string command = "INSERT INTO register_info(name,username,email,password,type) VALUES(" + values + ")";
+            SendCommand(command);
+
+            // location
+            command = "INSERT INTO location(UID,location) VALUES(LAST_INSERT_ID(),'" + location + "')";
             SendCommand(command);
 
             if (type.Equals("doctor"))
@@ -193,7 +196,7 @@ namespace DoctorsTravellers.Models
                 SendCommand(command);
             }
 
-            return qid = 1;// qhelp.GetQID(question);
+            return qid = 1;
         }
 
         public int CheckIfRegisteredUserHandler(string username, string password)

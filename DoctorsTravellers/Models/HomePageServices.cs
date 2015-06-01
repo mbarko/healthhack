@@ -90,12 +90,13 @@ namespace DoctorsTravellers.Models
             string email = collection.Get("email");
             string type = collection.Get("radio-group-1");
             string speciality = collection.Get("speciality");
+            string location = collection.Get("location");
 
             int qid = -1;
             MYSQLServices ms = new MYSQLServices();
             try
             {
-                qid = ms.AddToRegisterInfoTable(username, password, email, type, speciality);
+                qid = ms.AddToRegisterInfoTable(username, password, email, type, speciality, location);
                 return qid;
             }
             catch (Exception e) { throw; }
