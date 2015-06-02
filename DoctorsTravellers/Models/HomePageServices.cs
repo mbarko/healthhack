@@ -57,13 +57,28 @@ namespace DoctorsTravellers.Models
         public int QuestionPostHandelr(string question)
         {
             int qid = -1;
+            List<String> doctorsUID = new List<string>();
             MYSQLServices ms = new MYSQLServices();
             try
             {
                 qid = ms.AddToQuestionTable(question);
                 ms.CreateResponseTable(qid);
                 ms.AddToHashtable(qid, question);
-                return qid;
+
+                // when we post the question we should check if there is a doctor that qualifies to answer the question
+                // and if we can find a doctor to answer that question we send a notification to that doctor
+                doctorsUID = ms.getMatchingDoctors(question);
+                if (doctorsUID == null)
+                {
+                    return qid;
+                }
+                else
+                {
+                    string URL = QuestionSearchHandelr(question)[0].url;
+                    ms.AddTONotifications(doctorsUID, URL);
+                }
+
+                
             }
             catch (Exception e) { throw; }
             return qid;

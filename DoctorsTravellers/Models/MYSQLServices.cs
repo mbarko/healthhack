@@ -247,6 +247,50 @@ namespace DoctorsTravellers.Models
 
         }
 
+        public List<string> getMatchingDoctors(string question)
+        {
+            List<String> returnStrings = new List<string>();
+
+            List<string> hashResult = new List<string>();
+            string[] hashtemp = question.Split(null);
+            foreach (string i in hashtemp)
+            {
+                if (i.Contains('#'))
+                    hashResult.Add(i.TrimStart('#'));
+            }
+
+            List<string> locationResult = new List<string>();
+            string[] loctemp = question.Split(null);
+            foreach (string i in loctemp)
+            {
+                if (i.Contains('@'))
+                    locationResult.Add(i.TrimStart('@'));
+            }
+
+            string SQL = "SELECT speciality.UID FROM speciality,location WHERE speciality.UID=location.UID AND (speciality.speciality IN ('" + string.Join("','", hashResult) + "') OR location.location IN ('" + string.Join("','", locationResult) + "'))";
+
+            returnStrings = LoadData(SQL);
+
+            if (returnStrings.Count == 0)
+            {
+                return null;
+            }
+
+            return returnStrings;
+        }
+
+        public void AddTONotifications(List<string> doctorIDs, string URL)
+        {
+
+            string SQL = "";
+
+            for (int i = 0; i < doctorIDs.Count; i++)
+            {
+                SQL = SQL + "INSERT INTO notifications (UID,URL) VALUES('" + doctorIDs[i] + "','" + URL + "');";
+            }
+            SendCommand(SQL);
+            
+        }
         
 
 
